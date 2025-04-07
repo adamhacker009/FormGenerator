@@ -2,6 +2,7 @@ export default function (field, id){
 
     const div = document.createElement('div');
     div.classList.toggle('form-group')
+    div.classList.toggle('mb-2')
 
     const fieldLabel = document.createElement('label')
     if (field.label) fieldLabel.innerHTML = field.label;

@@ -1,17 +1,13 @@
 export default function (reference, id) {
-    if (reference.input) {
-        const wrapper = document.createElement('div');
-        const input = document.createElement("input");
+    if (reference.input) {const input = document.createElement("input");
         input.type = reference.input.type;
         input.checked = false
+        input.classList.add('mr-2');
         if (reference.required) input.required = true;
-        wrapper.append(input);
-        return wrapper;
+        return input;
     } else {
-        const wrapper = document.createElement("div");
-
         if(reference["text without ref"] && reference.text){
-            const plainText = document.createElement("p")
+            const plainText = document.createElement("span")
             const anchor = document.createElement("a");
 
             plainText.appendChild(document.createTextNode(reference["text without ref"]))
@@ -20,18 +16,17 @@ export default function (reference, id) {
             anchor.appendChild(document.createTextNode(reference.text))
             plainText.appendChild(document.createTextNode(' '));
             plainText.appendChild(anchor);
-            wrapper.append(plainText);
+            return plainText;
         }
         else if(reference["text without ref"]){
-            const plainText = document.createElement("p")
+            const plainText = document.createElement("span")
             plainText.appendChild(document.createTextNode(reference["text without ref"]))
-            wrapper.appendChild(plainText);
+            return plainText;
         } else if(reference.text) {
             const anchor = document.createElement("a");
             anchor.href = reference.ref;
             anchor.appendChild(document.createTextNode(reference.text))
-            wrapper.appendChild(anchor);
+            return anchor;
         }
-        return wrapper;
     }
 }

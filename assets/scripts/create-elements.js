@@ -18,14 +18,16 @@ export default function (elements) {
     const formRow = document.createElement('div');
     formRow.classList.toggle('form-group');
 
+    const referencesLabel = document.createElement('label');
+
     if(elements.references){
         elements.references.forEach((reference, id) => {
-            const referenceWrapper = document.createElement('div');
 
-            referenceWrapper.append(createReferences(reference, id));
-            formRow.appendChild(referenceWrapper);
+            referencesLabel.appendChild(createReferences(reference, id));
         })
     }
+
+    form.appendChild(referencesLabel);
 
     if(elements.buttons){
         elements.buttons.forEach((button, id) => {
