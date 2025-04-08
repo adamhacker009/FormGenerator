@@ -18,10 +18,20 @@
         <div class="container-lg mb-1">
             <h4>Добро пожаловать в генератор форм.</h4>
             <p>Добавьте файл и нажмите кнопку, чтобы начать</p>
-            <input class="form-control-file" type="file" id="file" name="file">
-            <button class="btn btn-primary" id="form-clear">Удалить форму</button>
+            <div class="d-flex gap-2">
+                <div>
+                    <label>
+                        <input class="form-control" type="file" id="file" name="file">
+                    </label>
+                </div>
+                <div>
+
+                </div>
+                <button class="btn btn-primary" id="form-clear">Удалить форму</button>
+            </div>
+
         </div>
-        <form class="container-lg">
+        <form class="container-lg" id="form">
 
         </form>
     </main>

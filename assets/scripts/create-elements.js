@@ -16,7 +16,8 @@ export default function (elements) {
     })
 
     const formRow = document.createElement('div');
-    formRow.classList.toggle('form-group');
+    formRow.classList.toggle('d-flex');
+    formRow.classList.toggle('w-25');
 
     const referencesLabel = document.createElement('label');
 
@@ -32,6 +33,9 @@ export default function (elements) {
     if(elements.buttons){
         elements.buttons.forEach((button, id) => {
             const buttonWrapper = document.createElement('div');
+            buttonWrapper.classList.toggle('mt-1');
+            buttonWrapper.classList.toggle('me-2');
+            buttonWrapper.classList.toggle('w-100')
 
             buttonWrapper.append(createButtons(button, id));
             formRow.appendChild(buttonWrapper);

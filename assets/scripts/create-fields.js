@@ -1,20 +1,40 @@
 export default function (field, id){
 
     const div = document.createElement('div');
-    div.classList.toggle('form-group')
+    div.classList.toggle('w-25')
     div.classList.toggle('mb-2')
 
     const fieldLabel = document.createElement('label')
+    fieldLabel.classList.add('w-100')
     if (field.label) fieldLabel.innerHTML = field.label;
 
-    const input = document.createElement('input');
+    let input;
+    if(field.input.type === "textarea"){
+        input = document.createElement('textarea');
+    }else if(field.input.type === "technology"){
+        input = document.createElement('select')
+    }
+    else{
+        input = document.createElement('input');
+        input.type = field.input.type;
+    }
 
-    input.type = field.input.type;
+
     input.id = 'field-' + id;
 
+    if(field.input.type === "technology"){
+        field.input.technologies.forEach((item, id) => {
+            const technology = document.createElement('option');
+            technology.value = item
+            technology.appendChild(document.createTextNode(item));
+            input.appendChild(technology);
+        })
+    }
 
-    if(input.type !== "checkbox")input.classList.add('form-control');
-    else input.classList.add('form-check-input')
+    if(input.type !== "checkbox") {
+        input.classList.add('form-control');
+        input.classList.add('w-100')
+    } else input.classList.add('form-check-input')
 
     if(field.input.type === "color") {
         const colorList = document.createElement("datalist")
@@ -35,6 +55,7 @@ export default function (field, id){
     if(field.input.checked) input.checked = false;
     if(field.input.placeholder) input.placeholder = field.input.placeholder;
     if(field.input.mask) input.placeholder = field.input.mask;
+    if(field.input.multiple) input.multiple = true;
 
     fieldLabel.appendChild(input);
     div.appendChild(fieldLabel);

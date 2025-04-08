@@ -18,6 +18,6 @@ function handleFileSelection(e) {
 }
 
 function removeForm(e) {
-    document.querySelector("form").innerHTML = '';
+    document.querySelector("#form").innerHTML = '';
     document.querySelector('#file').value = '';
 }

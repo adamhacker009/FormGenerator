@@ -16,11 +16,13 @@ export default function (reference, id) {
             anchor.appendChild(document.createTextNode(reference.text))
             plainText.appendChild(document.createTextNode(' '));
             plainText.appendChild(anchor);
+            plainText.classList.add('me-2');
             return plainText;
         }
         else if(reference["text without ref"]){
             const plainText = document.createElement("span")
             plainText.appendChild(document.createTextNode(reference["text without ref"]))
+            plainText.classList.add('me-2');
             return plainText;
         } else if(reference.text) {
             const anchor = document.createElement("a");
