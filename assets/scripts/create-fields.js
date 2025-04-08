@@ -51,11 +51,10 @@ export default function (field, id){
         input.setAttribute('list', colorList.id)
     }
 
-    if(field.input.required) input.required = true;
-    if(field.input.checked) input.checked = false;
-    if(field.input.placeholder) input.placeholder = field.input.placeholder;
-    if(field.input.mask) input.placeholder = field.input.mask;
-    if(field.input.multiple) input.multiple = true;
+    Object.entries(field.input).forEach(([key, value]) => {
+        if(key !== 'colors' || key !== 'technologies' || key !== 'filetype' || key === 'type' && value === 'technology') input.setAttribute(key, value); console.log(`${key}: ${value}`);
+    })
+
     if(field.input.filetype) {
         field.input.filetype.forEach((item, id) => {
             if(field.input.filetype.length > id + 1) {

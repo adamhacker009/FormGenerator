@@ -3,10 +3,12 @@ import createReferences from "./create-references.js";
 import createButtons from "./create-buttons.js";
 
 export default function (elements) {
-    const form = document.createElement('form');
+    const form = document.querySelector('form');
+    form.innerHTML = '';
+
     const formHead = document.createElement('h3');
-    form.classList.add('container-lg');
     formHead.classList.add('h3')
+    formHead.classList.add('width-1')
     formHead.append(document.createTextNode(elements.name));
 
     form.appendChild(formHead)
@@ -33,7 +35,7 @@ export default function (elements) {
     if(elements.buttons){
         elements.buttons.forEach((button, id) => {
             const buttonWrapper = document.createElement('div');
-            buttonWrapper.classList.toggle('mt-1');
+            buttonWrapper.classList.toggle('mt-2');
             buttonWrapper.classList.toggle('me-2');
             buttonWrapper.classList.toggle('w-100')
 
