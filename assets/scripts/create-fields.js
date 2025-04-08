@@ -1,7 +1,7 @@
 export default function (field, id){
 
     const div = document.createElement('div');
-    div.classList.toggle('w-25')
+    div.classList.toggle('width-1')
     div.classList.toggle('mb-2')
 
     const fieldLabel = document.createElement('label')
@@ -56,6 +56,15 @@ export default function (field, id){
     if(field.input.placeholder) input.placeholder = field.input.placeholder;
     if(field.input.mask) input.placeholder = field.input.mask;
     if(field.input.multiple) input.multiple = true;
+    if(field.input.filetype) {
+        field.input.filetype.forEach((item, id) => {
+            if(field.input.filetype.length > id + 1) {
+                input.accept = input.accept + '.' + item + ',';
+            } else {
+                input.accept = input.accept + '.' + item;
+            }
+        })
+    }
 
     fieldLabel.appendChild(input);
     div.appendChild(fieldLabel);

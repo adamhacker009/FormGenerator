@@ -17,7 +17,7 @@ export default function (elements) {
 
     const formRow = document.createElement('div');
     formRow.classList.toggle('d-flex');
-    formRow.classList.toggle('w-25');
+    formRow.classList.toggle('width-1');
 
     const referencesLabel = document.createElement('label');
 
