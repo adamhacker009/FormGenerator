@@ -52,7 +52,14 @@ export default function (field, id){
     }
 
     Object.entries(field.input).forEach(([key, value]) => {
-        if(key !== 'colors' || key !== 'technologies' || key !== 'filetype' || key === 'type' && value === 'technology') input.setAttribute(key, value); console.log(`${key}: ${value}`);
+        if (key !== 'colors'
+            && key !== 'technologies'
+            && key !== 'filetype'
+            && value !== 'technology'
+        ) {
+            input.setAttribute(key, value);
+            console.log(`${key}: ${value}`);
+        }
     })
 
     if(field.input.filetype) {
