@@ -1,10 +1,14 @@
 export default function (reference, id) {
+
     if (reference.input) {const input = document.createElement("input");
+        const referencesLabel = document.createElement('label');
+
         input.type = reference.input.type;
-        input.checked = false
         input.classList.add('me-1');
         if (reference.required) input.required = true;
-        return input;
+
+        referencesLabel.appendChild(input)
+        return referencesLabel;
     } else if(reference["text without ref"] && reference.text){
             const plainText = document.createElement("span")
             const anchor = document.createElement("a");

@@ -1,7 +1,7 @@
 export default function (field, id){
 
     const div = document.createElement('div');
-    div.className = 'width-1 mb-2'
+    div.className = 'mb-2'
 
     const fieldLabel = document.createElement('label')
     fieldLabel.classList.add('w-100')

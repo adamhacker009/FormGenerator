@@ -4,45 +4,48 @@ import createButtons from "./create-buttons.js";
 
 export default function (elements) {
     const form = document.querySelector('form');
+    const formHead = document.createElement('h3');
+    const formFields = document.createElement('div');
+    const formButtons = document.createElement('div');
+
+    let formReferences;
+
     form.innerHTML = '';
 
-    const formHead = document.createElement('h3');
     formHead.className = 'h3 width-1'
     formHead.innerHTML = elements.name;
 
     form.appendChild(formHead)
 
+    formFields.className = 'width-1'
+
     elements.fields.forEach((field, id) => {
-        form.appendChild(createFields(field, id));
+        formFields.appendChild(createFields(field, id));
     })
 
-    const formRow = document.createElement('div');
-    formRow.className = 'd-flex width-1'
+    form.appendChild(formFields);
 
-    const referencesLabel = document.createElement('label');
+    formButtons.className = 'd-flex width-1 mt-2'
+
 
     if(elements.references){
+        formReferences = document.createElement('div');
+
         elements.references.forEach((reference, id) => {
 
-            referencesLabel.appendChild(createReferences(reference, id));
+            formReferences.appendChild(createReferences(reference, id));
         })
     }
 
-    form.appendChild(referencesLabel);
+    form.appendChild(formReferences);
 
     if(elements.buttons){
         elements.buttons.forEach((button, id) => {
-            const buttonWrapper = document.createElement('div');
-            buttonWrapper.classList.toggle('mt-2');
-            buttonWrapper.classList.toggle('me-2');
-            buttonWrapper.classList.toggle('w-100')
-
-            buttonWrapper.append(createButtons(button, id));
-            formRow.appendChild(buttonWrapper);
+            formButtons.appendChild(createButtons(button, id));
         })
     }
 
-    form.appendChild(formRow);
+    form.appendChild(formButtons);
 
     document.querySelector('main').replaceChild(form, document.querySelector('form'));
 }
