@@ -7,9 +7,8 @@ export default function (elements) {
     form.innerHTML = '';
 
     const formHead = document.createElement('h3');
-    formHead.classList.add('h3')
-    formHead.classList.add('width-1')
-    formHead.append(document.createTextNode(elements.name));
+    formHead.className = 'h3 width-1'
+    formHead.innerHTML = elements.name;
 
     form.appendChild(formHead)
 
@@ -18,8 +17,7 @@ export default function (elements) {
     })
 
     const formRow = document.createElement('div');
-    formRow.classList.toggle('d-flex');
-    formRow.classList.toggle('width-1');
+    formRow.className = 'd-flex width-1'
 
     const referencesLabel = document.createElement('label');
 
